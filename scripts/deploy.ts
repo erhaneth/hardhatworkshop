@@ -1,0 +1,16 @@
+import { ethers } from "hardhat";
+
+async function main() {
+  const simpleStorageFactory = await ethers.getContractFactory("SimpleStorage");
+  const simpleStorage = await simpleStorageFactory.deploy();
+  await simpleStorage.deployed();
+
+  console.log(`simple storage deployed to ${simpleStorage.address}`);
+}
+
+// We recommend this pattern to be able to use async/await everywhere
+// and properly handle errors.
+main().catch((error) => {
+  console.error(error);
+  process.exitCode = 1;
+});
